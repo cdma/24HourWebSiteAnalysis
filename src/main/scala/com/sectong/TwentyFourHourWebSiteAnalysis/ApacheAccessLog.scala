@@ -8,8 +8,8 @@ case class ApacheAccessLog(
     method: String,
     endpoint: String,
     protocol: String,
-    responseCode: String,
-    contentSize: String) {
+    responseCode: Int,
+    contentSize: Long) {
 }
 
 object ApacheAccessLog {
@@ -21,6 +21,8 @@ object ApacheAccessLog {
       throw new RuntimeException("Cannot parse log line: " + log)
     }
     val m = res.get
+    val cs = if (m.group(9) == "-") 0L else m.group(9).toLong
+
     ApacheAccessLog(
       m.group(1),
       m.group(2),
@@ -29,7 +31,7 @@ object ApacheAccessLog {
       m.group(5),
       m.group(6),
       m.group(7),
-      m.group(8),
-      m.group(9))
+      m.group(8).toInt,
+      cs)
   }
 }

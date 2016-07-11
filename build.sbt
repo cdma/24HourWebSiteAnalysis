@@ -12,5 +12,5 @@ libraryDependencies += "org.apache.spark" %% "spark-streaming" % "1.6.1" % "prov
 
 libraryDependencies += ("org.apache.spark" %% "spark-streaming-kafka" % "1.6.1").exclude("org.spark-project.spark", "unused")
 
-assemblySettings
+libraryDependencies += "org.apache.spark" %% "spark-hive-thriftserver" % "1.6.1"
 

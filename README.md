@@ -7,5 +7,15 @@
 ## sbt assembly
 
 ## run
+```
 
-bin/spark-submit --master local --class com.sectong.TwentyFourHourWebSiteAnalysis.Main target/scala-2.10/TwentyFourHourWebSiteAnalysis-assembly-1.0.jar hadoop2:2181 groupa test 1
+	bin/spark-submit --master local --class com.sectong.TwentyFourHourWebSiteAnalysis.Main target/scala-2.10/TwentyFourHourWebSiteAnalysis-assembly-1.0.jar hadoop2:2181 groupa test 1
+```
+## create hive table
+```
+
+	CREATE EXTERNAL TABLE apacheaccesslog (ipAddress String, count BigInt) STORED AS PARQUET LOCATION '/tmp/apacheaccesslog';
+```
+
+## query in beeline
+
